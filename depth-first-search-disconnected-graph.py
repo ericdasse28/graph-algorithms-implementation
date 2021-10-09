@@ -18,7 +18,10 @@ class Graph:
         self.graph = defaultdict(list)
 
     def add_edge(self, u, v):
-        self.graph[u].append(v)
+        if v is None:
+            self.graph[u] = []
+        else:
+            self.graph[u].append(v)
 
     def dfs_util(self, v, visited):
         # Mark the current node as visited and print it
@@ -57,4 +60,5 @@ g.add_edge(2, 0)
 g.add_edge(2, 3)
 g.add_edge(3, 3)
 g.add_edge(8, 9)
+g.add_edge(7, None)
 g.dfs()
