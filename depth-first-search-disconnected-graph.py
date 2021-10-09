@@ -23,7 +23,7 @@ class Graph:
     def dfs_util(self, v, visited):
         # Mark the current node as visited and print it
         visited.add(v)
-        print(v)
+        print(v, end=" ")
 
         # Recur for all the vertices adjacent to this vertex
         for neighbor in self.graph[v]:
@@ -36,7 +36,13 @@ class Graph:
 
         # Call the recursive helper function to print DFS traversal starting
         # from all vertices one by one
-        for vertex in self.graph:
+
+        # Copy the keys to a list to avoid
+        # RunTimeError: dictionary changed size during iteration
+        # while performing DFS from each individual node
+        keys = list(self.graph.keys())
+
+        for vertex in keys:
             if vertex not in visited:
                 self.dfs_util(vertex, visited)
 
@@ -50,4 +56,5 @@ g.add_edge(1, 2)
 g.add_edge(2, 0)
 g.add_edge(2, 3)
 g.add_edge(3, 3)
+g.add_edge(8, 9)
 g.dfs()
