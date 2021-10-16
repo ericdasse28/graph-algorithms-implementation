@@ -24,7 +24,7 @@ class Graph:
         not yet included in shortest path tree
         """
         # Initialize minimum distance for next node
-        min_dist = sys.maxint
+        min_dist = sys.maxsize
 
         # Search for nearest vertex not in
         # the shortest path tree
@@ -42,7 +42,7 @@ class Graph:
         using adjacency matrix representation
         """
 
-        dist = [sys.maxint] * self.V
+        dist = [sys.maxsize] * self.V
         dist[src] = 0
         spt_set = [False] * self.V
 
@@ -69,7 +69,7 @@ class Graph:
 
 # Driver program
 g = Graph(9)
-g.graph = [[0, 4, 0, 0, 0, 0, 8, 0],
+g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
            [4, 0, 8, 0, 0, 0, 0, 11, 0],
            [0, 8, 0, 7, 0, 4, 0, 0, 2],
            [0, 0, 7, 0, 9, 14, 0, 0, 0],
